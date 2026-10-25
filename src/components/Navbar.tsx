@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 import ThemeToggle from "@/components/ThemeToggle";
 
@@ -70,21 +71,21 @@ export default function Navbar() {
         className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6"
       >
         {/* Logo */}
-        <a
-          href="#home"
+        <Link
+          href="/#home"
           className="flex items-center gap-2 text-lg font-bold tracking-tight text-zinc-900 transition-colors hover:text-lime-600 dark:text-zinc-100 dark:hover:text-lime-400"
         >
           <span className="grid size-8 place-items-center rounded-lg bg-lime-400 font-extrabold text-[#0a0d0a]">
             P
           </span>
           Poran<span className="text-lime-400">.</span>
-        </a>
+        </Link>
 
         {/* Desktop links */}
         <ul className="hidden items-center gap-7 text-sm font-medium md:flex">
           {NAV_LINKS.map(({ label, id }) => (
             <li key={id}>
-              <a href={`#${id}`} className={linkClass(id)}>
+              <a href={`/#${id}`} className={linkClass(id)}>
                 {label}
               </a>
             </li>
@@ -143,7 +144,7 @@ export default function Navbar() {
           {NAV_LINKS.map(({ label, id }) => (
             <li key={id}>
               <a
-                href={`#${id}`}
+                href={`/#${id}`}
                 onClick={() => setMenuOpen(false)}
                 className={`block rounded-lg px-3 py-2.5 transition-colors ${
                   activeId === id

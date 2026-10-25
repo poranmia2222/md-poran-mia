@@ -25,7 +25,7 @@ const TECH_STACK: readonly {
 const SOCIALS = [
   { label: "GitHub", href: "#", icon: ICONS.github },
   { label: "LinkedIn", href: "#", icon: ICONS.linkedin },
-  { label: "Email", href: "#contact", icon: ICONS.mail },
+  { label: "Email", href: "mailto:poranmia2222@gmail.com", icon: ICONS.mail },
 ] as const;
 
 

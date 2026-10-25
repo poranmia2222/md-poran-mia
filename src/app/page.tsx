@@ -1,5 +1,7 @@
+import Contact from "@/components/Contact";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
+import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
 
 export default function Home() {
@@ -103,30 +105,10 @@ export default function Home() {
         <Skills />
 
         {/* Projects */}
-        <section
-          id="projects"
-          className="mx-auto max-w-4xl px-4 py-24 sm:px-6"
-        >
-          <h2 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100">
-            Featured <span className="text-lime-600 dark:text-lime-400">Projects</span>
-          </h2>
-          <p className="mt-4 text-zinc-600 dark:text-zinc-400">
-            Placeholder for the projects section — showcase your work here.
-          </p>
-        </section>
+        <Projects />
 
         {/* Contact */}
-        <section
-          id="contact"
-          className="mx-auto max-w-4xl px-4 py-24 sm:px-6"
-        >
-          <h2 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100">
-            Get In <span className="text-lime-600 dark:text-lime-400">Touch</span>
-          </h2>
-          <p className="mt-4 text-zinc-600 dark:text-zinc-400">
-            Placeholder for the contact section — a form or email link goes here.
-          </p>
-        </section>
+        <Contact />
       </main>
     </>
   );
