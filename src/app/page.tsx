@@ -15,16 +15,16 @@ export default function Home() {
           id="about"
           className="mx-auto max-w-4xl px-4 py-24 sm:px-6"
         >
-          <h2 className="text-3xl font-bold text-zinc-100">
-            About <span className="text-lime-400">Me</span>
+          <h2 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100">
+            About <span className="text-lime-600 dark:text-lime-400">Me</span>
           </h2>
 
           <div className="mt-8 grid grid-cols-1 gap-10 lg:grid-cols-[1.35fr_0.9fr] lg:gap-12">
             {/* Story */}
-            <div className="space-y-5 leading-relaxed text-zinc-400">
-              <p className="text-lg text-zinc-300">
+            <div className="space-y-5 leading-relaxed text-zinc-600 dark:text-zinc-400">
+              <p className="text-lg text-zinc-800 dark:text-zinc-300">
                 Hi, I&apos;m{" "}
-                <span className="font-semibold text-lime-400">Poran Mia</span>, a
+                <span className="font-semibold text-lime-600 dark:text-lime-400">Poran Mia</span>, a
                 Full Stack Developer passionate about building modern,
                 user-friendly web applications.
               </p>
@@ -47,17 +47,17 @@ export default function Home() {
             </div>
 
             {/* Quick facts */}
-            <aside className="h-fit rounded-2xl border border-zinc-800 bg-[#0a0d0a]/60 p-6 backdrop-blur sm:p-7">
+            <aside className="h-fit rounded-2xl border border-zinc-200 bg-white/70 p-6 backdrop-blur sm:p-7 dark:border-zinc-800 dark:bg-[#0a0d0a]/60">
               <div>
                 <h3 className="text-xs font-semibold tracking-widest text-zinc-500 uppercase">
                   Journey
                 </h3>
-                <p className="mt-3 text-sm text-zinc-300">
-                  <span className="font-mono font-semibold text-lime-400">
+                <p className="mt-3 text-sm text-zinc-700 dark:text-zinc-300">
+                  <span className="font-mono font-semibold text-lime-600 dark:text-lime-400">
                     2018
                   </span>{" "}
                   — Graphic design,{" "}
-                  <span className="font-mono font-semibold text-lime-400">
+                  <span className="font-mono font-semibold text-lime-600 dark:text-lime-400">
                     2025
                   </span>{" "}
                   — into web development
@@ -72,7 +72,7 @@ export default function Home() {
                   {["MERN stack", "TypeScript", "Next.js"].map((item) => (
                     <li
                       key={item}
-                      className="rounded-full border border-zinc-700/80 bg-white/[0.03] px-3 py-1 text-xs font-medium text-zinc-300"
+                      className="rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1 text-xs font-medium text-zinc-700 dark:border-zinc-700/80 dark:bg-white/[0.03] dark:text-zinc-300"
                     >
                       {item}
                     </li>
@@ -88,7 +88,7 @@ export default function Home() {
                   {["Anime", "Cricket", "Travel"].map((item) => (
                     <li
                       key={item}
-                      className="rounded-full border border-zinc-700/80 bg-white/[0.03] px-3 py-1 text-xs font-medium text-zinc-300"
+                      className="rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1 text-xs font-medium text-zinc-700 dark:border-zinc-700/80 dark:bg-white/[0.03] dark:text-zinc-300"
                     >
                       {item}
                     </li>
@@ -107,10 +107,10 @@ export default function Home() {
           id="projects"
           className="mx-auto max-w-4xl px-4 py-24 sm:px-6"
         >
-          <h2 className="text-3xl font-bold text-zinc-100">
-            Featured <span className="text-lime-400">Projects</span>
+          <h2 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100">
+            Featured <span className="text-lime-600 dark:text-lime-400">Projects</span>
           </h2>
-          <p className="mt-4 text-zinc-400">
+          <p className="mt-4 text-zinc-600 dark:text-zinc-400">
             Placeholder for the projects section — showcase your work here.
           </p>
         </section>
@@ -120,10 +120,10 @@ export default function Home() {
           id="contact"
           className="mx-auto max-w-4xl px-4 py-24 sm:px-6"
         >
-          <h2 className="text-3xl font-bold text-zinc-100">
-            Get In <span className="text-lime-400">Touch</span>
+          <h2 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100">
+            Get In <span className="text-lime-600 dark:text-lime-400">Touch</span>
           </h2>
-          <p className="mt-4 text-zinc-400">
+          <p className="mt-4 text-zinc-600 dark:text-zinc-400">
             Placeholder for the contact section — a form or email link goes here.
           </p>
         </section>

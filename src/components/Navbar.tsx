@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 
+import ThemeToggle from "@/components/ThemeToggle";
+
 const NAV_LINKS = [
   { label: "Home", id: "home" },
   { label: "About", id: "about" },
@@ -53,14 +55,14 @@ export default function Navbar() {
   const linkClass = (id: string) =>
     `relative transition-colors duration-200 after:absolute after:-bottom-1.5 after:left-0 after:h-0.5 after:rounded-full after:bg-lime-400 after:transition-all after:duration-200 ${
       activeId === id
-        ? "text-lime-400 after:w-full"
-        : "text-zinc-300 hover:text-lime-400 after:w-0 hover:after:w-full"
+        ? "text-lime-600 after:w-full dark:text-lime-400"
+        : "text-zinc-600 hover:text-lime-600 after:w-0 hover:after:w-full dark:text-zinc-300 dark:hover:text-lime-400"
     }`;
 
   return (
     <header
-      className={`sticky top-0 z-50 border-b border-white/5 bg-[#0a0d0a]/80 backdrop-blur-md transition-shadow duration-300 ${
-        scrolled ? "shadow-lg shadow-black/40" : ""
+      className={`sticky top-0 z-50 border-b border-black/[0.06] bg-white/80 backdrop-blur-md transition-shadow duration-300 dark:border-white/5 dark:bg-[#0a0d0a]/80 ${
+        scrolled ? "shadow-lg shadow-black/[0.05] dark:shadow-black/40" : ""
       }`}
     >
       <nav
@@ -70,7 +72,7 @@ export default function Navbar() {
         {/* Logo */}
         <a
           href="#home"
-          className="flex items-center gap-2 text-lg font-bold tracking-tight text-zinc-100 transition-colors hover:text-lime-400"
+          className="flex items-center gap-2 text-lg font-bold tracking-tight text-zinc-900 transition-colors hover:text-lime-600 dark:text-zinc-100 dark:hover:text-lime-400"
         >
           <span className="grid size-8 place-items-center rounded-lg bg-lime-400 font-extrabold text-[#0a0d0a]">
             P
@@ -89,25 +91,28 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <div className="hidden md:block">
-          <a
-            href={RESUME_URL}
-            download="Poran_Mia_Resume.pdf"
-            className="rounded-lg bg-lime-400 px-4 py-2 text-sm font-semibold text-[#0a0d0a] shadow-sm shadow-lime-400/30 transition-all duration-200 hover:bg-lime-300 hover:shadow-md hover:shadow-lime-400/40"
-          >
-            Download Resume
-          </a>
-        </div>
+        {/* Theme toggle + resume + hamburger group */}
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          <div className="hidden md:block">
+            <a
+              href={RESUME_URL}
+              download="Poran_Mia_Resume.pdf"
+              className="rounded-lg bg-lime-400 px-4 py-2 text-sm font-semibold text-[#0a0d0a] shadow-sm shadow-lime-400/30 transition-all duration-200 hover:bg-lime-300 hover:shadow-md hover:shadow-lime-400/40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lime-400"
+            >
+              Download Resume
+            </a>
+          </div>
 
-        {/* Mobile hamburger */}
-        <button
-          type="button"
-          onClick={() => setMenuOpen((open) => !open)}
-          aria-expanded={menuOpen}
-          aria-controls="mobile-menu"
-          aria-label={menuOpen ? "Close menu" : "Open menu"}
-          className="flex size-10 flex-col items-center justify-center gap-[5px] rounded-lg text-zinc-200 transition-colors hover:bg-white/5 md:hidden"
-        >
+          {/* Mobile hamburger */}
+          <button
+            type="button"
+            onClick={() => setMenuOpen((open) => !open)}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            className="flex size-10 flex-col items-center justify-center gap-[5px] rounded-lg text-zinc-700 transition-colors hover:bg-black/5 md:hidden dark:text-zinc-200 dark:hover:bg-white/5"
+          >
           <span
             className={`h-0.5 w-6 rounded-full bg-current transition-all duration-300 ${
               menuOpen ? "translate-y-[7px] rotate-45" : ""
@@ -124,12 +129,13 @@ export default function Navbar() {
             }`}
           />
         </button>
+        </div>
       </nav>
 
       {/* Mobile menu */}
       <div
         id="mobile-menu"
-        className={`overflow-hidden border-t border-white/5 bg-[#0a0d0a]/95 backdrop-blur-md transition-[max-height,opacity] duration-300 ease-in-out md:hidden ${
+        className={`overflow-hidden border-t border-black/[0.06] bg-white/95 backdrop-blur-md transition-[max-height,opacity] duration-300 ease-in-out md:hidden dark:border-white/5 dark:bg-[#0a0d0a]/95 ${
           menuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
@@ -142,7 +148,7 @@ export default function Navbar() {
                 className={`block rounded-lg px-3 py-2.5 transition-colors ${
                   activeId === id
                     ? "bg-lime-400/10 text-lime-400"
-                    : "text-zinc-300 hover:bg-white/5 hover:text-lime-400"
+                    : "text-zinc-700 hover:bg-black/5 hover:text-lime-600 dark:text-zinc-300 dark:hover:bg-white/5 dark:hover:text-lime-400"
                 }`}
               >
                 {label}

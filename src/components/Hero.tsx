@@ -1,13 +1,16 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import type { CSSProperties } from "react";
 
-import { ICONS } from "./icons";
-
+import { ICONS, type BrandIcon } from "./icons";
 const RESUME_URL = "/resume.pdf";
 
 // Tech stack — official brand marks (Simple Icons), shared via ./icons
-const TECH_STACK = [
+const TECH_STACK: readonly {
+  readonly label: string;
+  readonly icon: BrandIcon;
+}[] = [
   { label: "Next.js", icon: ICONS.next },
   { label: "TypeScript", icon: ICONS.typescript },
   { label: "React", icon: ICONS.react },
@@ -24,6 +27,7 @@ const SOCIALS = [
   { label: "LinkedIn", href: "#", icon: ICONS.linkedin },
   { label: "Email", href: "#contact", icon: ICONS.mail },
 ] as const;
+
 
 /* Entrance choreography — staggered delays for the hero's rise-in */
 const rise = (delay: string) => ({ animationDelay: delay }) as const;
@@ -98,7 +102,7 @@ export default function Hero() {
         data-speed="-0.06"
         className="absolute -inset-16 will-change-transform"
       >
-        <div className="absolute inset-0 [background-image:radial-gradient(circle,rgba(163,230,53,0.07)_1px,transparent_1px)] [background-size:32px_32px]" />
+        <div className="absolute inset-0 [background-image:radial-gradient(circle,rgba(101,163,13,0.14)_1px,transparent_1px)] [background-size:32px_32px] dark:[background-image:radial-gradient(circle,rgba(163,230,53,0.07)_1px,transparent_1px)]" />
       </div>
 
       {/* Layer 2: glowing lime blobs */}
@@ -125,10 +129,10 @@ export default function Hero() {
                 {Array.from({ length: 4 }).map((_, k) => (
                   <span
                     key={k}
-                    className="pr-10 text-[13vw] font-black tracking-tight whitespace-nowrap text-transparent uppercase select-none [-webkit-text-stroke:1.5px_rgba(163,230,53,0.14)]"
+                    className="pr-10 text-[13vw] font-black tracking-tight whitespace-nowrap text-transparent uppercase select-none [-webkit-text-stroke:1.5px_rgba(101,163,13,0.22)] dark:[-webkit-text-stroke:1.5px_rgba(163,230,53,0.14)]"
                   >
                     Full Stack Developer
-                    <span className="text-transparent [-webkit-text-stroke:1.5px_rgba(163,230,53,0.3)]">
+                    <span className="text-transparent [-webkit-text-stroke:1.5px_rgba(101,163,13,0.4)] dark:[-webkit-text-stroke:1.5px_rgba(163,230,53,0.3)]">
                       {" "}
                       ✦{" "}
                     </span>
@@ -147,10 +151,10 @@ export default function Hero() {
                 {Array.from({ length: 4 }).map((_, k) => (
                   <span
                     key={k}
-                    className="pr-10 text-[13vw] font-black tracking-tight whitespace-nowrap text-transparent uppercase select-none [-webkit-text-stroke:1.5px_rgba(163,230,53,0.08)]"
+                    className="pr-10 text-[13vw] font-black tracking-tight whitespace-nowrap text-transparent uppercase select-none [-webkit-text-stroke:1.5px_rgba(101,163,13,0.12)] dark:[-webkit-text-stroke:1.5px_rgba(163,230,53,0.08)]"
                   >
                     Full Stack Developer
-                    <span className="text-transparent [-webkit-text-stroke:1.5px_rgba(163,230,53,0.24)]">
+                    <span className="text-transparent [-webkit-text-stroke:1.5px_rgba(101,163,13,0.32)] dark:[-webkit-text-stroke:1.5px_rgba(163,230,53,0.24)]">
                       {" "}
                       ✦{" "}
                     </span>
@@ -173,7 +177,7 @@ export default function Hero() {
         {/* Left column: everything a recruiter needs, immediately visible */}
         <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
           <p
-            className="animate-rise inline-flex items-center gap-2 rounded-full border border-lime-400/30 bg-lime-400/10 px-3.5 py-1.5 text-xs font-semibold tracking-wide text-lime-300 sm:text-sm"
+            className="animate-rise inline-flex items-center gap-2 rounded-full border border-lime-500/30 bg-lime-400/10 px-3.5 py-1.5 text-xs font-semibold tracking-wide text-lime-800 sm:text-sm dark:text-lime-300"
             style={rise("0.05s")}
           >
             {/* Pulsing "open to work" dot — the first thing recruiters scan for */}
@@ -184,19 +188,19 @@ export default function Hero() {
             Open to work — Full-time & freelance
           </p>
           <h1
-            className="animate-rise mt-5 text-[2.75rem] font-extrabold leading-[1.05] tracking-tighter text-zinc-50 sm:text-6xl xl:text-[4.25rem]"
+            className="animate-rise mt-5 text-[2.75rem] font-extrabold leading-[1.05] tracking-tighter text-zinc-900 sm:text-6xl xl:text-[4.25rem] dark:text-zinc-50"
             style={rise("0.12s")}
           >
             Hi, I&apos;m{" "}
-            <span className="bg-gradient-to-br from-lime-200 via-lime-400 to-lime-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-br from-lime-600 via-lime-500 to-lime-500 bg-clip-text text-transparent dark:from-lime-200 dark:via-lime-400 dark:to-lime-500">
               Poran Mia
             </span>
-            <span className="mt-3 block font-mono text-base font-semibold tracking-normal text-zinc-200 sm:text-lg">
+            <span className="mt-3 block font-mono text-base font-semibold tracking-normal text-zinc-600 sm:text-lg dark:text-zinc-200">
               Full-Stack Developer · Next.js · React · Node.js
             </span>
           </h1>
           <p
-            className="animate-rise mt-5 max-w-xl text-base leading-relaxed text-zinc-400 sm:text-lg"
+            className="animate-rise mt-5 max-w-xl text-base leading-relaxed text-zinc-600 sm:text-lg dark:text-zinc-400"
             style={rise("0.2s")}
           >
             I design and build fast, production-ready web apps end to end —
@@ -223,14 +227,14 @@ export default function Hero() {
             </a>
             <a
               href="#projects"
-              className="inline-flex h-11 items-center gap-2 rounded-xl border border-zinc-700 bg-white/[0.03] px-6 text-sm font-semibold text-zinc-200 transition-all duration-200 hover:-translate-y-0.5 hover:border-lime-400/40 hover:bg-lime-400/[0.06] hover:text-lime-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lime-400 active:translate-y-0"
+              className="inline-flex h-11 items-center gap-2 rounded-xl border border-zinc-300 px-6 text-sm font-semibold text-zinc-700 transition-all duration-200 hover:-translate-y-0.5 hover:border-lime-500/50 hover:bg-lime-400/10 hover:text-lime-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lime-400 active:translate-y-0 dark:border-zinc-700 dark:bg-white/[0.03] dark:text-zinc-200 dark:hover:border-lime-400/40 dark:hover:bg-lime-400/[0.06] dark:hover:text-lime-300"
             >
               View My Work
               <span aria-hidden>→</span>
             </a>
             <a
               href="#contact"
-              className="inline-flex h-11 items-center gap-2 rounded-xl px-3 text-sm font-semibold text-zinc-400 transition-colors duration-200 hover:text-lime-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lime-400"
+              className="inline-flex h-11 items-center gap-2 rounded-xl px-3 text-sm font-semibold text-zinc-600 transition-colors duration-200 hover:text-lime-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lime-400 dark:text-zinc-400 dark:hover:text-lime-300"
             >
               Get in Touch
               <span aria-hidden>↗</span>
@@ -248,7 +252,7 @@ export default function Hero() {
                 key={label}
                 href={href}
                 aria-label={label}
-                className="grid size-11 place-items-center rounded-xl border border-zinc-800 text-zinc-400 transition-all duration-200 hover:-translate-y-0.5 hover:border-lime-400/40 hover:text-lime-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lime-400"
+                className="grid size-11 place-items-center rounded-xl border border-zinc-200 text-zinc-500 transition-all duration-200 hover:-translate-y-0.5 hover:border-lime-500/40 hover:text-lime-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lime-400 dark:border-zinc-800 dark:text-zinc-400 dark:hover:border-lime-400/40 dark:hover:text-lime-300"
               >
                 <svg
                   viewBox="0 0 24 24"
@@ -286,7 +290,7 @@ export default function Hero() {
           {/* Portrait card — float bob wrapper */}
           <div data-speed="0.08" className="relative will-change-transform">
             <div className="animate-float" style={{ animationDelay: "1.4s" }}>
-              <div className="relative aspect-[4/5] w-56 rotate-3 overflow-hidden rounded-[2rem] bg-white shadow-2xl shadow-black/50 ring-1 ring-lime-400/25 sm:w-64 lg:w-72 lg:rotate-2">
+              <div className="relative aspect-[4/5] w-56 rotate-3 overflow-hidden rounded-[2rem] bg-white shadow-2xl shadow-black/25 ring-1 ring-lime-400/25 sm:w-64 lg:w-72 lg:rotate-2 dark:shadow-black/50">
                 {/* Plain <img>: serves the raw high-res PNG, no optimizer recompression */}
                 <img
                   src="/MyImage.png"
@@ -313,7 +317,7 @@ export default function Hero() {
       </div>
 
       {/* Skills ticker — marquee strip pinned to the hero's bottom edge */}
-      <div className="absolute inset-x-0 bottom-0 z-10 overflow-hidden border-y border-zinc-800/80 bg-[#0a0d0a]/70 py-3 backdrop-blur">
+      <div className="absolute inset-x-0 bottom-0 z-10 overflow-hidden border-y border-zinc-200 bg-white/70 py-3 backdrop-blur dark:border-zinc-800/80 dark:bg-[#0a0d0a]/70">
         <p className="sr-only">Technologies I work with</p>
         <div className="animate-marquee-l flex w-max hover:[animation-play-state:paused]">
           {[0, 1].map((half) => (
@@ -324,13 +328,22 @@ export default function Hero() {
                 TECH_STACK.map(({ label, icon }) => (
                   <span
                     key={`${copy}-${label}`}
-                    className="mx-5 inline-flex items-center gap-2 text-sm font-medium text-zinc-300"
+                    className="mx-5 inline-flex items-center gap-2 text-sm font-medium text-zinc-600 dark:text-zinc-300"
                   >
                     <svg
                       viewBox="0 0 24 24"
-                      fill={icon.color}
+                      fill={icon.lightColor ?? icon.color}
                       aria-hidden
-                      className="size-4"
+                      style={
+                        icon.lightColor
+                          ? ({ "--icon-dark": icon.color } as CSSProperties)
+                          : undefined
+                      }
+                      className={
+                        icon.lightColor
+                          ? "size-4 dark:fill-[var(--icon-dark)]"
+                          : "size-4"
+                      }
                     >
                       <path d={icon.path} />
                     </svg>
@@ -344,11 +357,11 @@ export default function Hero() {
         {/* Soft edge fades */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-[#0a0d0a] to-transparent"
+          className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-white to-transparent dark:from-[#0a0d0a]"
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-[#0a0d0a] to-transparent"
+          className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-white to-transparent dark:from-[#0a0d0a]"
         />
       </div>
 
@@ -358,7 +371,7 @@ export default function Hero() {
         data-fade
         className="absolute bottom-16 left-1/2 z-10 -translate-x-1/2"
       >
-        <span className="flex h-9 w-5.5 items-start justify-center rounded-full border border-zinc-600 p-1.5">
+        <span className="flex h-9 w-5.5 items-start justify-center rounded-full border border-zinc-300 p-1.5 dark:border-zinc-600">
           <span className="animate-float size-1 rounded-full bg-lime-400" />
         </span>
       </div>

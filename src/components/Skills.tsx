@@ -1,4 +1,5 @@
 import { ICONS, type BrandIcon } from "./icons";
+import type { CSSProperties } from "react";
 
 /* Square-tile skills grid — visual language borrowed from shadcn/ui cards and
    HeroUI chips (flat surface, 1px hairline border, subtle hover elevation)
@@ -81,10 +82,10 @@ const SECTIONS: SkillSection[] = [
 export default function Skills() {
   return (
     <section id="skills" className="mx-auto max-w-4xl px-4 py-24 sm:px-6">
-      <h2 className="text-3xl font-bold text-zinc-100">
-        My <span className="text-lime-400">Skills</span>
+      <h2 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100">
+        My <span className="text-lime-600 dark:text-lime-400">Skills</span>
       </h2>
-      <p className="mt-4 text-zinc-400">
+      <p className="mt-4 text-zinc-600 dark:text-zinc-400">
         The tools and technologies I use to design, build, and ship web
         applications.
       </p>
@@ -93,14 +94,14 @@ export default function Skills() {
         {SECTIONS.map(({ title, tiles, span, items }) => (
           <div
             key={title}
-            className={`rounded-2xl border border-zinc-800 bg-[#0a0d0a]/60 p-5 backdrop-blur sm:p-6 ${span}`}
+            className={`rounded-2xl border border-zinc-200 bg-white/70 p-5 backdrop-blur sm:p-6 dark:border-zinc-800 dark:bg-[#0a0d0a]/60 ${span}`}
           >
             {/* Category header — title left, live count in mono right */}
             <div className="flex items-baseline justify-between gap-3">
-              <h3 className="text-sm font-bold tracking-wide text-zinc-100">
+              <h3 className="text-sm font-bold tracking-wide text-zinc-900 dark:text-zinc-100">
                 {title}
               </h3>
-              <span className="font-mono text-xs text-lime-400/70">
+              <span className="font-mono text-xs text-lime-600 dark:text-lime-400/70">
                 {items.length}
               </span>
             </div>
@@ -110,17 +111,26 @@ export default function Skills() {
               {items.map(({ label, icon }) => (
                 <li
                   key={label}
-                  className="group relative flex aspect-square flex-col items-center justify-center gap-2 rounded-xl border border-zinc-800 bg-white/[0.02] p-2.5 text-center transition-all duration-200 hover:border-lime-400/40 hover:bg-lime-400/[0.05] hover:shadow-[0_0_24px_-8px_rgba(163,230,53,0.35)]"
+                  className="group relative flex aspect-square flex-col items-center justify-center gap-2 rounded-xl border border-zinc-200 bg-zinc-50 p-2.5 text-center transition-all duration-200 hover:border-lime-500/40 hover:bg-lime-400/[0.06] hover:shadow-[0_0_24px_-8px_rgba(101,163,13,0.35)] dark:border-zinc-800 dark:bg-white/[0.02] dark:hover:border-lime-400/40 dark:hover:bg-lime-400/[0.05] dark:hover:shadow-[0_0_24px_-8px_rgba(163,230,53,0.35)]"
                 >
                   <svg
                     viewBox="0 0 24 24"
-                    fill={icon.color}
+                    fill={icon.lightColor ?? icon.color}
                     aria-hidden
-                    className="size-7 transition-transform duration-200 group-hover:scale-110"
+                    className={
+                      icon.lightColor
+                        ? "size-7 transition-transform duration-200 group-hover:scale-110 dark:fill-[var(--icon-dark)]"
+                        : "size-7 transition-transform duration-200 group-hover:scale-110"
+                    }
+                    style={
+                      icon.lightColor
+                        ? ({ "--icon-dark": icon.color } as CSSProperties)
+                        : undefined
+                    }
                   >
                     <path d={icon.path} />
                   </svg>
-                  <span className="text-[11px] leading-tight font-medium text-zinc-400 transition-colors duration-200 group-hover:text-zinc-200">
+                  <span className="text-[11px] leading-tight font-medium text-zinc-600 transition-colors duration-200 group-hover:text-zinc-800 dark:text-zinc-400 dark:group-hover:text-zinc-200">
                     {label}
                   </span>
                 </li>
