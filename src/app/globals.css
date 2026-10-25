@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0d0a;
+  --foreground: #ededed;
 }
 
 @theme inline {
@@ -12,15 +12,129 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Smooth anchor scrolling; sections offset so they don't hide under the sticky navbar */
+html {
+  scroll-behavior: smooth;
+}
+
+section {
+  scroll-margin-top: 4.5rem;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Floating drift for hero chips (instant float class usable anywhere) */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+/* Orbit — the skill ring revolving around the hero portrait */
+@keyframes orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbit-reverse {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+.animate-orbit {
+  animation: orbit 26s linear infinite;
+}
+
+.animate-orbit-rev {
+  animation: orbit-reverse 26s linear infinite;
+}
+
+/* Portrait motion — float bob, slow breathing scale, pulsing aura glow */
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.035);
+  }
+}
+
+.animate-breathe {
+  animation: breathe 7s ease-in-out infinite;
+}
+
+@keyframes aura-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.55;
+    transform: scale(1.15);
+  }
+}
+
+.animate-aura {
+  animation: aura-pulse 7s ease-in-out infinite;
+}
+
+/* Diagonal marquee lanes — copy streams right (animate-marquee-r)
+   and left (animate-marquee-l); tracks hold two identical halves
+   so the -50%~0% translate loops seamlessly. */
+@keyframes marquee-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-right {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.animate-marquee-l {
+  animation: marquee-left 40s linear infinite;
+}
+
+.animate-marquee-r {
+  animation: marquee-right 40s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-float,
+  .animate-orbit,
+  .animate-orbit-rev,
+  .animate-breathe,
+  .animate-aura,
+  .animate-marquee-l,
+  .animate-marquee-r {
+    animation: none;
+  }
 }
