@@ -42,25 +42,20 @@ body {
   animation: float 5s ease-in-out infinite;
 }
 
-/* Orbit — the skill ring revolving around the hero portrait */
-@keyframes orbit {
+/* Entrance choreography — staggered rise-in for the hero's first paint */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@keyframes orbit-reverse {
-  to {
-    transform: rotate(-360deg);
-  }
-}
-
-.animate-orbit {
-  animation: orbit 26s linear infinite;
-}
-
-.animate-orbit-rev {
-  animation: orbit-reverse 26s linear infinite;
+.animate-rise {
+  animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 /* Portrait motion — float bob, slow breathing scale, pulsing aura glow */
@@ -129,12 +124,12 @@ body {
   }
 
   .animate-float,
-  .animate-orbit,
-  .animate-orbit-rev,
+  .animate-rise,
   .animate-breathe,
   .animate-aura,
   .animate-marquee-l,
-  .animate-marquee-r {
+  .animate-marquee-r,
+  .animate-ping {
     animation: none;
   }
 }
