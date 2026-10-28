@@ -4,14 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 
 import ThemeToggle from "@/components/ThemeToggle";
-
-const NAV_LINKS = [
-  { label: "Home", id: "home" },
-  { label: "About", id: "about" },
-  { label: "Skills", id: "skills" },
-  { label: "Projects", id: "projects" },
-  { label: "Contact", id: "contact" },
-] as const;
+import { NAV_LINKS } from "@/lib/links";
 
 const RESUME_URL = "/resume.pdf";
 

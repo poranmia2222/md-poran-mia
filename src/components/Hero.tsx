@@ -111,8 +111,8 @@ export default function Hero() {
         data-speed="-0.12"
         className="absolute inset-0 will-change-transform"
       >
-        <div className="absolute top-1/4 left-[12%] size-80 rounded-full bg-lime-400/10 blur-3xl" />
-        <div className="absolute right-[10%] bottom-1/4 size-96 rounded-full bg-lime-400/[0.07] blur-3xl" />
+        <div className="absolute top-1/4 left-[12%] size-56 rounded-full bg-lime-400/10 blur-3xl sm:size-80" />
+        <div className="absolute right-[10%] bottom-1/4 size-64 rounded-full bg-lime-400/[0.07] blur-3xl sm:size-96" />
       </div>
 
       {/* Layer 3: dual diagonal marquees — two "road lanes" of outline
@@ -172,10 +172,10 @@ export default function Hero() {
           stack is secondary, on the right. */}
       <div
         data-fade
-        className="relative z-10 grid w-full max-w-5xl grid-cols-1 items-center gap-10 will-change-transform lg:grid-cols-[1.05fr_auto] lg:gap-16"
+        className="relative z-10 grid w-full max-w-5xl grid-cols-1 items-center gap-10 will-change-transform md:grid-cols-[1.05fr_auto] md:gap-8 lg:gap-16"
       >
         {/* Left column: everything a recruiter needs, immediately visible */}
-        <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
+        <div className="flex flex-col items-center text-center md:items-start md:text-left">
           <p
             className="animate-rise inline-flex items-center gap-2 rounded-full border border-lime-500/30 bg-lime-400/10 px-3.5 py-1.5 text-xs font-semibold tracking-wide text-lime-800 sm:text-sm dark:text-lime-300"
             style={rise("0.05s")}
@@ -188,7 +188,7 @@ export default function Hero() {
             Open to work — Full-time & freelance
           </p>
           <h1
-            className="animate-rise mt-5 text-[2.75rem] font-extrabold leading-[1.05] tracking-tighter text-zinc-900 sm:text-6xl xl:text-[4.25rem] dark:text-zinc-50"
+            className="animate-rise mt-5 text-[2.75rem] font-extrabold leading-[1.05] tracking-tighter text-zinc-900 max-[374px]:text-4xl sm:text-6xl md:text-5xl lg:text-6xl xl:text-[4.25rem] dark:text-zinc-50"
             style={rise("0.12s")}
           >
             Hi, I&apos;m{" "}
@@ -209,13 +209,13 @@ export default function Hero() {
 
           {/* CTAs — resume download is primary: a recruiter's #1 action */}
           <div
-            className="animate-rise mt-8 flex flex-wrap items-center justify-center gap-3 lg:justify-start"
+            className="animate-rise mt-8 flex flex-wrap items-center justify-center gap-3 md:justify-start"
             style={rise("0.28s")}
           >
             <a
               href={RESUME_URL}
               download="Poran_Mia_Resume.pdf"
-              className="group inline-flex h-11 items-center gap-2 rounded-xl bg-lime-400 px-6 text-sm font-semibold text-[#0a0d0a] shadow-lg shadow-lime-400/20 transition-all duration-200 hover:-translate-y-0.5 hover:bg-lime-300 hover:shadow-xl hover:shadow-lime-400/30 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lime-400 active:translate-y-0"
+              className="group inline-flex h-11 w-full items-center justify-center gap-2 rounded-xl bg-lime-400 px-6 text-sm font-semibold text-[#0a0d0a] shadow-lg shadow-lime-400/20 transition-all duration-200 hover:-translate-y-0.5 hover:bg-lime-300 hover:shadow-xl hover:shadow-lime-400/30 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lime-400 active:translate-y-0 sm:w-auto"
             >
               Download Resume
               <span
@@ -227,7 +227,7 @@ export default function Hero() {
             </a>
             <a
               href="#projects"
-              className="inline-flex h-11 items-center gap-2 rounded-xl border border-zinc-300 px-6 text-sm font-semibold text-zinc-700 transition-all duration-200 hover:-translate-y-0.5 hover:border-lime-500/50 hover:bg-lime-400/10 hover:text-lime-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lime-400 active:translate-y-0 dark:border-zinc-700 dark:bg-white/[0.03] dark:text-zinc-200 dark:hover:border-lime-400/40 dark:hover:bg-lime-400/[0.06] dark:hover:text-lime-300"
+              className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-xl border border-zinc-300 px-6 text-sm font-semibold text-zinc-700 transition-all duration-200 hover:-translate-y-0.5 hover:border-lime-500/50 hover:bg-lime-400/10 hover:text-lime-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lime-400 active:translate-y-0 sm:w-auto dark:border-zinc-700 dark:bg-white/[0.03] dark:text-zinc-200 dark:hover:border-lime-400/40 dark:hover:bg-lime-400/[0.06] dark:hover:text-lime-300"
             >
               View My Work
               <span aria-hidden>→</span>
@@ -243,7 +243,7 @@ export default function Hero() {
 
           {/* Socials */}
           <div
-            className="animate-rise mt-6 flex items-center justify-center gap-3 lg:justify-start"
+            className="animate-rise mt-6 flex items-center justify-center gap-3 md:justify-start"
             style={rise("0.36s")}
           >
             <span aria-hidden className="h-px w-10 bg-zinc-700" />
@@ -290,7 +290,7 @@ export default function Hero() {
           {/* Portrait card — float bob wrapper */}
           <div data-speed="0.08" className="relative will-change-transform">
             <div className="animate-float" style={{ animationDelay: "1.4s" }}>
-              <div className="relative aspect-[4/5] w-56 rotate-3 overflow-hidden rounded-[2rem] bg-white shadow-2xl shadow-black/25 ring-1 ring-lime-400/25 sm:w-64 lg:w-72 lg:rotate-2 dark:shadow-black/50">
+              <div className="relative aspect-[4/5] w-56 rotate-3 overflow-hidden rounded-[2rem] bg-white shadow-2xl shadow-black/25 ring-1 ring-lime-400/25 sm:w-64 md:w-56 lg:w-72 lg:rotate-2 dark:shadow-black/50">
                 {/* Plain <img>: serves the raw high-res PNG, no optimizer recompression */}
                 <img
                   src="/MyImage.png"
@@ -365,11 +365,12 @@ export default function Hero() {
         />
       </div>
 
-      {/* Scroll hint */}
+      {/* Scroll hint — desktop/tablet only; on phones the stacked layout makes
+          the full-height scroll obvious, and this would overlap the portrait */}
       <div
         aria-hidden
         data-fade
-        className="absolute bottom-16 left-1/2 z-10 -translate-x-1/2"
+        className="absolute bottom-16 left-1/2 z-10 hidden -translate-x-1/2 sm:block"
       >
         <span className="flex h-9 w-5.5 items-start justify-center rounded-full border border-zinc-300 p-1.5 dark:border-zinc-600">
           <span className="animate-float size-1 rounded-full bg-lime-400" />
