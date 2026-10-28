@@ -7,13 +7,13 @@ import { ICONS, type BrandIcon } from "./icons";
 /* Footer — a simple, elegant close for the site: brand + one-line tagline,
    tracked socials, quick section links, and a slim bottom bar with copyright
    and a back-to-top link. The hairline borders mirror the navbar; the socials
-   reuse the Hero/Contact convention ("#" while the live profile is pending). */
+   use the same live profiles as the Hero and Contact sections. */
 
 const EMAIL = "poranmia2222@gmail.com"; // same address used in the Contact section
 
 const SOCIALS: { label: string; href: string; icon: BrandIcon }[] = [
-  { label: "GitHub", href: "#", icon: ICONS.github },
-  { label: "LinkedIn", href: "#", icon: ICONS.linkedin },
+  { label: "GitHub", href: "https://github.com/poranmia2222", icon: ICONS.github },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/poranmia/", icon: ICONS.linkedin },
   { label: "Email", href: `mailto:${EMAIL}`, icon: ICONS.mail },
 ];
 
@@ -68,8 +68,7 @@ export default async function Footer() {
             </p>
           </div>
 
-          {/* Socials — icon chips; "#" profiles keep the subdued pending
-              treatment used by the Contact cards, live links get the lift */}
+          {/* Socials — icon chips with the site's lift-on-hover treatment */}
           <ul className="flex items-center gap-2.5">
             {SOCIALS.map(({ label, href, icon }) => (
               <li key={label}>
@@ -79,11 +78,7 @@ export default async function Footer() {
                   {...(href.startsWith("http")
                     ? { target: "_blank", rel: "noreferrer" }
                     : {})}
-                  className={
-                    href === "#"
-                      ? "grid size-10 place-items-center rounded-xl border border-zinc-200 bg-zinc-50/80 text-zinc-400 opacity-80 dark:border-zinc-800 dark:bg-white/[0.03] dark:text-zinc-500"
-                      : "grid size-10 place-items-center rounded-xl border border-zinc-200 bg-zinc-50 text-zinc-600 transition-all duration-200 hover:-translate-y-0.5 hover:border-lime-500/40 hover:text-lime-600 hover:shadow-md hover:shadow-black/[0.05] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lime-400 dark:border-zinc-800 dark:bg-white/[0.03] dark:text-zinc-400 dark:hover:border-lime-400/40 dark:hover:text-lime-400 dark:hover:shadow-black/40"
-                  }
+                  className="grid size-10 place-items-center rounded-xl border border-zinc-200 bg-zinc-50 text-zinc-600 transition-all duration-200 hover:-translate-y-0.5 hover:border-lime-500/40 hover:text-lime-600 hover:shadow-md hover:shadow-black/[0.05] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lime-400 dark:border-zinc-800 dark:bg-white/[0.03] dark:text-zinc-400 dark:hover:border-lime-400/40 dark:hover:text-lime-400 dark:hover:shadow-black/40"
                 >
                   <SocialIcon icon={icon} />
                 </a>

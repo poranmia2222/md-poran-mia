@@ -1,9 +1,9 @@
 import { ICONS, type BrandIcon } from "./icons";
 import type { CSSProperties } from "react";
 
-/* Contact section — real links only. The email row below renders once the
-   author fills EMAIL in; GitHub/LinkedIn stay "#" placeholders until the
-   author replaces them, matching the hero's socials. */
+/* Contact section — live links only: GitHub/LinkedIn profiles, the direct
+   email row, and the résumé download. External profiles open in a new tab,
+   matching the hero's socials and the project pages. */
 
 const EMAIL = "poranmia2222@gmail.com";
 
@@ -24,13 +24,13 @@ type Connection = {
 const CONNECTIONS: Connection[] = [
   {
     label: "GitHub",
-    href: "#",
+    href: "https://github.com/poranmia2222",
     description: "Code, experiments, and open source",
     icon: ICONS.github,
   },
   {
     label: "LinkedIn",
-    href: "#",
+    href: "https://www.linkedin.com/in/poranmia/",
     description: "Professional profile and networking",
     icon: ICONS.linkedin,
   },
@@ -128,7 +128,7 @@ export default function Contact() {
           {CONNECTIONS.map(({ label, href, description, icon, download }) => {
             const inner = (
               <>
-                <span className="grid size-11 shrink-0 place-items-center rounded-xl border border-zinc-200 bg-zinc-50 text-zinc-600 transition-colors duration-200 dark:border-zinc-800 dark:bg-white/[0.03] dark:text-zinc-400">
+                <span className="grid size-11 shrink-0 place-items-center rounded-xl border border-zinc-200 bg-zinc-50 text-zinc-600 transition-colors duration-200 dark:border-zinc-800 dark:bg-white/3 dark:text-zinc-400">
                   {icon ? (
                     <ConnectionIcon icon={icon} />
                   ) : (
@@ -147,23 +147,24 @@ export default function Contact() {
                   aria-hidden
                   className="ml-auto font-mono text-sm text-zinc-400"
                 >
-                  {download ? "↓" : href === "#" ? "·" : "↗"}
+                  {download ? "↓" : "↗"}
                 </span>
               </>
             );
 
             const live =
               "group flex items-center gap-4 rounded-2xl border border-zinc-200 bg-white/70 p-4 backdrop-blur transition-all duration-200 hover:-translate-y-0.5 hover:border-lime-500/40 hover:shadow-md hover:shadow-black/[0.05] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lime-400 dark:border-zinc-800 dark:bg-[#0a0d0a]/60 dark:hover:border-lime-400/40 dark:hover:shadow-black/40";
-            const pending =
-              "flex items-center gap-4 rounded-2xl border border-zinc-200 bg-white/50 p-4 backdrop-blur opacity-80 dark:border-zinc-800 dark:bg-[#0a0d0a]/40";
 
-            return href === "#" ? (
-              <li key={label} className={pending}>
-                {inner}
-              </li>
-            ) : (
+            return (
               <li key={label}>
-                <a href={href} {...(download ? { download: "Poran_Mia_Resume.pdf" } : {})} className={live}>
+                <a
+                  href={href}
+                  {...(download ? { download: "Poran_Mia_Resume.pdf" } : {})}
+                  {...(href.startsWith("http")
+                    ? { target: "_blank", rel: "noreferrer" }
+                    : {})}
+                  className={live}
+                >
                   {inner}
                 </a>
               </li>

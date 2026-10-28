@@ -23,8 +23,8 @@ const TECH_STACK: readonly {
 ] as const;
 
 const SOCIALS = [
-  { label: "GitHub", href: "#", icon: ICONS.github },
-  { label: "LinkedIn", href: "#", icon: ICONS.linkedin },
+  { label: "GitHub", href: "https://github.com/poranmia2222", icon: ICONS.github },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/poranmia/", icon: ICONS.linkedin },
   { label: "Email", href: "mailto:poranmia2222@gmail.com", icon: ICONS.mail },
 ] as const;
 
@@ -37,6 +37,9 @@ export default function Hero() {
 
   // Parallax: layers with [data-speed] translate with scroll + cursor;
   // the content wrapper ([data-fade]) fades out as you scroll past the hero.
+  // Desktop-only choreography: on phones the copy stacks above the portrait,
+  // and a scroll-driven fade made the intro vanish before the picture was
+  // even in view — so small screens get none of it.
   useEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
@@ -52,8 +55,25 @@ export default function Hero() {
     const mouse = { x: 0, y: 0 };
     let raf = 0;
 
+    const desktop = window.matchMedia("(min-width: 768px)");
+
+    // Undo any inline transforms/opacity so elements fall back to their
+    // classes when the choreography is off (phones, or a rotated tablet).
+    const reset = () => {
+      for (const el of layers) el.style.transform = "";
+      for (const el of faders) {
+        el.style.opacity = "";
+        el.style.transform = "";
+      }
+    };
+
     const render = () => {
       raf = 0;
+      if (!desktop.matches) {
+        reset();
+        return;
+      }
+
       const scrollY = window.scrollY;
 
       for (const el of layers) {
@@ -80,12 +100,16 @@ export default function Hero() {
       schedule();
     };
 
+    const onDesktopChange = () => schedule();
+
     render();
     window.addEventListener("scroll", schedule, { passive: true });
     window.addEventListener("mousemove", onMouseMove, { passive: true });
+    desktop.addEventListener("change", onDesktopChange);
     return () => {
       window.removeEventListener("scroll", schedule);
       window.removeEventListener("mousemove", onMouseMove);
+      desktop.removeEventListener("change", onDesktopChange);
       if (raf) cancelAnimationFrame(raf);
     };
   }, []);
@@ -252,6 +276,9 @@ export default function Hero() {
                 key={label}
                 href={href}
                 aria-label={label}
+                {...(href.startsWith("http")
+                  ? { target: "_blank", rel: "noreferrer" }
+                  : {})}
                 className="grid size-11 place-items-center rounded-xl border border-zinc-200 text-zinc-500 transition-all duration-200 hover:-translate-y-0.5 hover:border-lime-500/40 hover:text-lime-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lime-400 dark:border-zinc-800 dark:text-zinc-400 dark:hover:border-lime-400/40 dark:hover:text-lime-300"
               >
                 <svg
